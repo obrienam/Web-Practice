@@ -3,7 +3,7 @@ function addElement () {
     let b = document.getElementById("body")
     let x = document.createElement("footer");
     x.setAttribute("id", "foot");
-    let y = document.createElement("h1");
+    let y = document.getElementById("title")
     let t = document.createTextNode("Website For Testing Javascript");
     y.appendChild(t)
     document.body.insertBefore(x,b);
@@ -20,4 +20,8 @@ function addElement () {
     document.getElementsByTagName("h1").innerHTML = "<div>" + "Body!" + "</div>";
     let cont = document.innerHTML;
     console.log(cont)
+}
+function buttFunction() {
+    let x = document.getElementById("pic");
+    x.setAttribute("src", "https://static.vecteezy.com/system/resources/previews/000/090/513/non_2x/vector-comic-style-surprise-illustration.jpg")
 }

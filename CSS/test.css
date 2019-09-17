@@ -6,6 +6,21 @@
     z-index: 99 !important;
 }
 
+img {
+    display: block;
+    position: absolute;
+    top:300px;
+    right:300px;
+    width:50%; 
+}
+
+button {
+  display: block;
+  position: absolute;
+  top:400px;
+  right:450px;
+  margin: auto;
+}
 #column1, #column2, #column3{
     text-align:center;
     flex:50%;
@@ -19,6 +34,8 @@ a:link, a:visited{
 }
 
 body h1{
+    top:0;
+    position: absolute;
     color: #fff;
     width: 100%;
     text-align:left;
