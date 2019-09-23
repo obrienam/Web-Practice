@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
   <title>Hello, Vue.js</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
     <div id="app-2">
             <span v-bind:title="message">
                 Hover your mouse over me for a few seconds
-                to see my dynamically bound title!
+                to see when this page was loaded!
             </span>
     </div>
     <div id="app-3">
@@ -31,7 +32,7 @@
             <button v-on:click="reverseMessage">Reverse Message</button>
     </div>
     <div id="app-6">
-            <p>{{ message }}</p>
+            <p>{{ message.toUpperCase().split('').reverse().join('') }}</p>
             <input v-model="message">
     </div>
     <div id="app-7">
@@ -45,14 +46,22 @@
     </div>
     <div id="app-8">
         <p>{{ foo }}            {{ boo }}</p>
-        <button v-on:click="foo = 'baz'">Change bar</button>
-        <button v-on:click="boo = 'lon'">Change foo</button>
+        <div class="btn-group1">
+            <p>{{ foo }}</p>
+            <button v-on:click="foo = 'baz'">Change me!</button>
+            <button v-on:click="foo = 'bar'">Change me back!</button>
+        </div>
+        <div class="btn-group2">
+            <p>{{ boo }}</p>
+            <button v-on:click="boo = 'for'">Change me too!</button>
+            <button v-on:click="boo = 'foo'">Change me back too!</button>
+        </div>
     </div>
     <script>
         const app = new Vue({
             el: '#app',
             data: {
-                message: 'Hello Vue!',
+                message: 'Vue Experimentation Page!',
                 now: new Date()
             }
         });
@@ -113,11 +122,11 @@
             foo:'bar',
             boo:'foo'
         }
-        
         var app8 = new Vue({
             el: '#app-8',
             data: obj
         })
+    
     </script>
         
 </body>

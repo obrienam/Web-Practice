@@ -2,3 +2,17 @@ html, body {
     margin: 5px;
     padding: 0;
 }
+.btn-group1 {
+    display:inline-block;
+}
+.btn-group2 {
+    display:inline-block;
+}
+.btn-group1 button {
+    color:blue;
+    display:block;
+}
+.btn-group2 button {
+    color:red;
+    display:block;
+}
