@@ -32,7 +32,7 @@
             <button v-on:click="reverseMessage">Reverse Message</button>
     </div>
     <div id="app-6">
-            <p>{{ message.toUpperCase().split('').reverse().join('') }}</p>
+            <p>{{ reversedMessage }}</p>
             <input v-model="message">
     </div>
     <div id="app-7">
@@ -45,18 +45,26 @@
         </ol>
     </div>
     <div id="app-8">
-        <p>{{ foo }}            {{ boo }}</p>
         <div class="btn-group1">
-            <p>{{ foo }}</p>
+            <p id="b">{{ foo }}</p>
             <button v-on:click="foo = 'baz'">Change me!</button>
             <button v-on:click="foo = 'bar'">Change me back!</button>
         </div>
         <div class="btn-group2">
-            <p>{{ boo }}</p>
+            <p id="r">{{ boo }}</p>
             <button v-on:click="boo = 'for'">Change me too!</button>
             <button v-on:click="boo = 'foo'">Change me back too!</button>
         </div>
     </div>
+    <div id="app-9">
+            <p>
+                Ask a yes/no question:
+                <input v-model="question">
+            </p>
+            <p>{{ answer }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <script>
         const app = new Vue({
             el: '#app',
@@ -94,7 +102,7 @@
             },
             methods: {
                 reverseMessage: function () {
-                this.message = this.message.split('').reverse().join('')
+                this.message = this.message.split('').reverse().join('').toUpperCase()
                 }
             }
         });
@@ -102,6 +110,11 @@
             el: '#app-6',
             data: {
                 message: 'Hello Vue!'
+            },
+            computed: {
+                reversedMessage: function() {
+                    return this.message.split('').reverse().join('').toUpperCase()
+                }
             }
         });
         Vue.component('todo-item', {
@@ -126,7 +139,39 @@
             el: '#app-8',
             data: obj
         })
-    
+        var app9 = new Vue({
+            el: '#app-9',
+            data: {
+                question: '',
+                answer: 'How can I answer a question if you haven\'t asked anything yet!'
+            },
+            watch: {
+                question: function (newQuestion, oldQuestion) {
+                    this.answer = 'You are typing too fast for me to keep up!'
+                    this.debouncedGetAnswer()
+                }
+            },
+            created: function () {
+                this.debouncedGetAnswer = _.debounce(this.getAnswer,500)
+            },
+            methods: {
+                getAnswer: function () {
+                    if (this.question.indexOf('?') === -1) {
+                        this.answer = 'You forgot a question mark you dingus.'
+                        return
+                    }
+                    this.answer = 'Thinking...'
+                    var vm = this
+                    axios.get('https://yesno.wtf/api')
+                        .then(function (response) {
+                        vm.answer = _.capitalize(response.data.answer)
+                        })
+                        .catch(function (error) {
+                        vm.answer = 'Error! Could not reach the API. ' + error
+                        })
+                    }
+                }
+        })
     </script>
         
 </body>
