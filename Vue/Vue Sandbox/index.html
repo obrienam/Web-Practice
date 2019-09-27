@@ -64,10 +64,11 @@
             <p>{{ answer }}</p>
     </div>
     <div id="app-10">
-        <button v-on:click="sh='f'">Get rid of the garbage!</button>
-        <p v-if="sh === 't'">
-                I am garbage text!
-        </p>
+        <button v-on:click="sh=false">Get rid of the garbage!</button>
+        <button v-on:click="sh=true">Bring back garbage!</button>
+        <template v-if="sh">
+                <p>I am garbage text!</p>
+        </template>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
@@ -179,8 +180,9 @@
                 }
         })
         var app10 = new Vue({
+            el: '#app-10',
             data: {
-                sh:'t'
+                sh:true
             }
         })
     </script>
