@@ -64,10 +64,10 @@
             <p>{{ answer }}</p>
     </div>
     <div id="app-10">
-        <button v-on:click="sh=false">Get rid of the garbage!</button>
-        <button v-on:click="sh=true">Bring back garbage!</button>
+        <button v-on:click="sh=false">Take out the trash!</button>
+        <button v-on:click="sh=true">Generate more trash!</button>
         <template v-if="sh">
-                <p>I am garbage text!</p>
+                <img src='garbage.jpeg' width="250">
         </template>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
