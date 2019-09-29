@@ -70,9 +70,9 @@
                 <img src='garbage.jpeg' width="250">
         </template>
     </div>
-    <div id="app-11">
+    <div id="app-11" v-on:click.once="counter -=1">
         <p>I have been poked {{ counter }} times. Thanks...</p>
-        <button v-on:click="counter += 1">Poke</button>
+        <button v-on:click.stop="counter += 1">Poke</button>
     </div>
     <div id="app-12" style="text-align:center">
         <button v-on:click="anger">Do not touch</button>
@@ -80,6 +80,10 @@
     <div id="app-13">
         <button v-on:click="say('Ouch')">Poke me</button>
         <button v-on:click="say('Dont do that')">Don't poke me</button>
+    </div>
+    <div id="app-14">
+        <p>Type something and press enter for a surprise!</p>
+        <input v-model="message" v-on:keyup.enter="broadcast()">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
@@ -218,6 +222,17 @@
             methods: {
                 say: function (message) {
                     alert(message)
+                }
+            }
+        })
+        var app14 = new Vue({
+            el: '#app-14',
+            data: {
+                message:""
+            },
+            computed: {
+                broadcast: function () {
+                    alert("You typed: " +this.message)
                 }
             }
         })
