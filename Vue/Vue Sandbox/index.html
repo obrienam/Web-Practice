@@ -70,6 +70,17 @@
                 <img src='garbage.jpeg' width="250">
         </template>
     </div>
+    <div id="app-11">
+        <p>I have been poked {{ counter }} times. Thanks...</p>
+        <button v-on:click="counter += 1">Poke</button>
+    </div>
+    <div id="app-12" style="text-align:center">
+        <button v-on:click="anger">Do not touch</button>
+    </div>
+    <div id="app-13">
+        <button v-on:click="say('Ouch')">Poke me</button>
+        <button v-on:click="say('Dont do that')">Don't poke me</button>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <script>
@@ -183,6 +194,31 @@
             el: '#app-10',
             data: {
                 sh:true
+            }
+        })
+        var app11 = new Vue({
+            el: '#app-11',
+            data: {
+                counter: 0
+            }
+        })
+        var app12 = new Vue({
+            el: '#app-12',
+            data: {
+                name: 'Vue.js'
+            },
+            methods: {
+                anger: function(event) {
+                    alert('You have angered the Vuejs gods by clicking this button. Be very afraid')
+                }
+            }
+        })
+        var app13 = new Vue({
+            el: '#app-13',
+            methods: {
+                say: function (message) {
+                    alert(message)
+                }
             }
         })
     </script>
