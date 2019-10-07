@@ -92,11 +92,14 @@
         
     </div>
     <div id="blog-post-demo">
+        <div :style="{ fontSize: postFontSize + 'em' }">
         <blog-post
             v-for="post in posts"
             v-bind:key="post.id"
-            v-bind:title="post.title"
-        ></blog-post>
+            v-bind:post="post"
+            v-on:enlarge-text="postFontSize += 0.1"
+          ></blog-post>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
@@ -258,18 +261,27 @@
             template: '<button v-on:click="count++">You clicked me {{ count }} times. </button>'
         })
         Vue.component('blog-post', {
-            props: ['title'],
-            template: '<h3>{{ title }}</h3>'
+            props: ['post'],
+            template: `
+                        <div class="blog-post">
+                        <h3>{{ post.title }}</h3>
+                        <button v-on:click="$emit('enlarge-text')">
+                            Enlarge text
+                        </button>
+                        <div v-html="post.content"></div>
+                        </div>
+                    `
         })
         new Vue({ el: '#components'})
         new Vue({
         el: '#blog-post-demo',
         data: {
             posts: [
-            { id: 1, title: 'My journey with Vue' },
-            { id: 2, title: 'Blogging with Vue' },
-            { id: 3, title: 'Why Vue is so fun' }
-            ]
+                { id: 1, title: 'My journey with Vue' },
+                { id: 2, title: 'Blogging with Vue' },
+                { id: 3, title: 'Why Vue is so fun' }
+            ],
+            postFontSize: 1
         }
         })
     </script>
