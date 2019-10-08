@@ -101,6 +101,19 @@
           ></blog-post>
         </div>
     </div>
+    <div id="dynamic-component-demo" class="demo">
+        <button
+          v-for="tab in tabs"
+          v-bind:key="tab"
+          v-bind:class="['tab-button', { active: currentTab === tab }]"
+          v-on:click="currentTab = tab"
+        >{{ tab }}</button>
+    
+        <component
+          v-bind:is="currentTabComponent"
+          class="tab"
+        ></component>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <script>
@@ -269,9 +282,24 @@
                             Enlarge text
                         </button>
                         <div v-html="post.content"></div>
+                        <div class="demo-alert-box">
+                        <strong>Error!</strong>
+                        <slot></slot>
+                        </div>
                         </div>
                     `
         })
+        Vue.component('tab-home', { 
+            template: '<div>Home component</div>' 
+        })
+        Vue.component('tab-posts', { 
+            template: '<div>Posts component</div>' 
+        })
+        Vue.component('tab-archive', { 
+            template: '<div>Archive component</div>' 
+        })
+
+        
         new Vue({ el: '#components'})
         new Vue({
         el: '#blog-post-demo',
@@ -284,6 +312,19 @@
             postFontSize: 1
         }
         })
+        new Vue({
+        el: '#dynamic-component-demo',
+        data: {
+            currentTab: 'Home',
+            tabs: ['Home', 'Posts', 'Archive']
+        },
+        computed: {
+            currentTabComponent: function () {
+            return 'tab-' + this.currentTab.toLowerCase()
+            }
+        }
+        })
+
     </script>
         
 </body>
