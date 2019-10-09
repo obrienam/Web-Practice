@@ -108,11 +108,15 @@
           v-bind:class="['tab-button', { active: currentTab === tab }]"
           v-on:click="currentTab = tab"
         >{{ tab }}</button>
-    
-        <component
-          v-bind:is="currentTabComponent"
-          class="tab"
-        ></component>
+        <keep-alive>
+            <component
+            v-bind:is="currentTabComponent"
+            class="tab"
+            v-on:pressed="c = $event"
+            :style="{color:c}"
+            >
+            </component>
+        </keep-alive>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
@@ -290,13 +294,31 @@
                     `
         })
         Vue.component('tab-home', { 
-            template: '<div>Home component</div>' 
+            template: `
+            <div>
+            <p>Home component</p>
+            <button
+            v-on:click="$emit('pressed', 'blue')"
+            >Change my color to blue!</button>
+            </div>`
         })
         Vue.component('tab-posts', { 
-            template: '<div>Posts component</div>' 
+            template: `
+            <div>
+            <p>Posts component</p>
+            <button
+            v-on:click="$emit('pressed', 'red')"
+            >Change my color to red!</button>
+            </div>`
         })
         Vue.component('tab-archive', { 
-            template: '<div>Archive component</div>' 
+            template: `
+            <div>
+            <p>Archive component</p>
+            <button
+            v-on:click="$emit('pressed', 'green')"
+            >Change my color to green!</button>
+            </div>`
         })
 
         
@@ -314,14 +336,18 @@
         })
         new Vue({
         el: '#dynamic-component-demo',
-        data: {
-            currentTab: 'Home',
-            tabs: ['Home', 'Posts', 'Archive']
+        data: function () {
+            return {
+                currentTab: 'Home',
+                tabs: ['Home', 'Posts', 'Archive'],
+                c: 'black'
+            }
         },
         computed: {
             currentTabComponent: function () {
             return 'tab-' + this.currentTab.toLowerCase()
             }
+        
         }
         })
 
