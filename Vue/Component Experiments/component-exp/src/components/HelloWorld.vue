@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h1>{{ msg2 }}</h1>
+    <h1>{{ msg3 }}</h1>
     <h3>Resources:</h3>
     <ul>
       
@@ -16,7 +18,9 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
+    msg2: String,
+    msg3: String
   }
 }
 </script>

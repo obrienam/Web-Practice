@@ -2,11 +2,14 @@
   <div id="app">
     <div id = "banner">
       <img alt="Vue logo" src="./assets/logo.png">
-      Vue Test Website
+      VueJS Test Website
     </div>
     <tabs className=".vue-tablist">
       <tab title="Home">
-        <HelloWorld msg="A simple vuejs experimentation page."/>
+        <HelloWorld msg="A simple vuejs experimentation page."
+                    msg2="The tabs above hold each component I experimented with."
+                    msg3="Feel free to explore!"/>
+                              
       </tab> 
       <tab title="Stickers">
         <div id = sticker>
@@ -76,9 +79,10 @@ export default {
   border: 1px solid transparent;
   border-bottom-color: #e2e2e2;
   border-radius: 3px 3px 0 0;
-  background-color: white;
+  background-color: rgb(71,183,132);
   position: relative;
   bottom: -1px;
+  color:white;
 }
 
 .vue-tab[aria-selected="true"] {
