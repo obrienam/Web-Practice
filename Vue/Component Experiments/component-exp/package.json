@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vue-flashcard": "^1.1.6",
     "vue-slim-tabs": "^0.4.0"
   },
   "devDependencies": {

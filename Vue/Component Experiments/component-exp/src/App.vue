@@ -16,6 +16,17 @@
            <VueSticker :d="224" className="example" prefix="--"></VueSticker>
         </div>
       </tab>
+      <tab title="Flash Cards">
+        <vue-flashcard
+        front="this is a flashcard"
+        headerFront="Click Me!"
+        footerFront=""
+        imgFront="https://vuejs.org/images/logo.png"
+        headerBack="Click Me!"
+        footerBack=""
+        back="this is the back">
+        </vue-flashcard>
+      </tab>
        
     </tabs>
     
@@ -26,13 +37,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import VueSticker from 'vue-sticker'
 import { Tabs, Tab } from 'vue-slim-tabs'
+import vueFlashcard from 'vue-flashcard'
 export default {
   name: 'app',
   components: {
     HelloWorld,
     VueSticker,
     Tabs,
-    Tab
+    Tab,
+    vueFlashcard
   }
 }
 </script>
