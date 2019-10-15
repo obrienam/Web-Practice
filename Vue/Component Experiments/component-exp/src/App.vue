@@ -14,7 +14,9 @@
       <tab title="Stickers">
         <div id = sticker>
            <VueSticker :d="224" className="example" prefix="--"></VueSticker>
+           <VueSticker :d="256" className="logos" prefix="--"></VueSticker>  
         </div>
+      
       </tab>
       <tab title="Flash Cards">
         <vue-flashcard
@@ -112,6 +114,15 @@ export default {
 }
 .example--backside-image {
   background-image: url('assets/decept.png')
+
+}
+
+.logos--main-image {
+  background-image: url('assets/apple.png');
+  
+}
+.logos--backside-image {
+  background-image: url('assets/google.png');
 
 }
 
