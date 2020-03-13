@@ -1,0 +1,24 @@
+{
+  "name": "web-practice",
+  "version": "1.0.0",
+  "description": "web development sandbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obrienam/Web-Practice.git"
+  },
+  "keywords": [
+    "sandbox",
+    "web",
+    "node"
+  ],
+  "author": "obrienam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/obrienam/Web-Practice/issues"
+  },
+  "homepage": "https://github.com/obrienam/Web-Practice#readme"
+}
