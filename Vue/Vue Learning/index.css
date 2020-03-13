@@ -17,10 +17,10 @@ html, body {
     display:block;
 }
 #r{
-    color:red;
+    color:blue;
 }
 #b{
-    color:blue;
+    color:gray;
 }
 
 .tab-button {
